@@ -1,6 +1,7 @@
 package com.example.movies.controller;
 
 import com.example.movies.dto.MovieDTO;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 import com.example.movies.service.MovieService;
 
@@ -17,7 +18,7 @@ public class MovieController {
     }
 
     @PostMapping
-    public MovieDTO createAMovie(@RequestBody MovieDTO dto){
+    public MovieDTO createAMovie(@Valid @RequestBody MovieDTO dto){
         return movieService.createMovie(dto);
     }
 
@@ -32,7 +33,7 @@ public class MovieController {
     }
 
     @PutMapping
-    public MovieDTO updateMovie( @PathVariable Long id, @RequestBody MovieDTO dto){
+    public MovieDTO updateMovie( @PathVariable Long id, @Valid @RequestBody MovieDTO dto){
         return movieService.updateMovie(id, dto);
     }
 
